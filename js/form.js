@@ -1,108 +1,105 @@
-var submit = document.querySelector("#adicionar-paciente");
+var submit = document.querySelector("#add-patient");
 var form = document.querySelector("#form-add");
 
 submit.addEventListener("click", function (event) {
     event.preventDefault();
     
-    var paciente = obtemPaciente(form);  
+    var patient = getPatient(form);  
 
-    if (!validaPacienteForm(paciente,form))
+    if (!validatePatientForm(patient,form))
         return;
 
-    adicionaPacienteTabela(paciente);
+    addPatientTable(patient);
     
     form.reset();
 });
 
-function obtemPaciente(form){
-    var paciente = {
-        nome: form.nome.value,
-        peso: form.peso.value,
-        altura: form.altura.value,
-        gordura: form.gordura.value,
-        imc: calcimc(form.peso.value, form.altura.value)
+function getPatient(form){
+    var patient = {
+        name: form.name.value,
+        weight: form.weight.value,
+        height: form.height.value,
+        fat: form.fat.value,
+        bmi: calcBMI(form.weight.value, form.height.value)
     }
 
-    return paciente;
+    return patient;
 }
 
-function montaTr(paciente){
-    var pacienteTr = criaElemento("tr", "paciente");
+function mountTr(patient){
+    var patientTr = mountElement("tr", "patient");
 
-    pacienteTr.classList.add("scale-transition");
-    pacienteTr.appendChild(criaElemento("td", "info-nome", paciente.nome));
-    pacienteTr.appendChild(criaElemento("td","info-peso", paciente.peso));
-    pacienteTr.appendChild(criaElemento("td","info-altura", paciente.altura));
-    pacienteTr.appendChild(criaElemento("td","info-gordura", paciente.gordura));
-    pacienteTr.appendChild(criaElemento("td","info-imc", paciente.imc));
+    patientTr.classList.add("scale-transition");
+    patientTr.appendChild(mountElement("td", "info-name", patient.name));
+    patientTr.appendChild(mountElement("td", "info-weight", patient.weight));
+    patientTr.appendChild(mountElement("td","info-height", patient.height));
+    patientTr.appendChild(mountElement("td","info-fat", patient.fat));
+    patientTr.appendChild(mountElement("td","info-bmi", patient.bmi));
 
-    return pacienteTr;
+    return patientTr;
 }
 
-function criaElemento(elemento, classe, conteudo){
-    var element = document.createElement(elemento);
-    element.classList.add(classe);
-    element.textContent = conteudo;
+function mountElement(element, elementClass, content){
+    var e = document.createElement(element);
+    e.classList.add(elementClass);
+    e.textContent = content;
 
-    return element;
+    return e;
 }
 
-function validaPacienteForm(paciente, form){
-    if (!validaPeso(paciente.peso)){
-        criaErroForm(".peso-group", form.peso, "erroPeso", "Peso inválido");
+function validatePatientForm(patient, form){
+    if (!validateWeight(patient.weight)){
+        formError(".weight-group", form.weight, "errorWeight", "invalid");
     } else{
-        limpaErroForm(form.peso, "erroPeso");
+        clearFormError(form.weight, "errorWeight");
     }
     
-    if (!validaAltura(paciente.altura)){
-        criaErroForm(".altura-group", form.altura, "erroAltura", "Altura inválida");
+    if (!validateHeight(patient.height)){
+        formError(".height-group", form.height, "errorHeight", "invalid");
     } else {
-        limpaErroForm(form.altura, "erroAltura");
+        clearFormError(form.height, "errorHeight");
     } 
     
-    if (!validaGordura(paciente.gordura)){
-        criaErroForm(".gordura-group", form.gordura, "erroGordura", "Gordura inválida");
+    if (!validateFat(patient.fat)){
+        formError(".fat-group", form.fat, "errorFat", "invalid");
     } else {
-        limpaErroForm(form.gordura, "erroGordura");
+        clearFormError(form.fat, "errorFat");
     }
 
-    if (validaPeso(paciente.peso) && validaAltura(paciente.altura) && validaGordura(paciente.gordura)) {
+    if (validateWeight(patient.weight) && validateHeight(patient.height) && validateFat(patient.fat)) {
         return true;
     }
 
     return false;
 }
 
-function criaErroForm(grupo, input, classe, mensagem){
-    var spanErro = document.querySelector("." + classe);
-    if(spanErro !== null){
+function formError(group, input, errorClass, message){
+    var spanError = document.querySelector("." + errorClass);
+    if(spanError !== null){
         return;
     }else{
-        var grupoDiv = document.querySelector(grupo);
+        var groupDiv = document.querySelector(group);
         input.classList.add("invalid");
-        var error = criaElemento("span", classe, mensagem);
+        var error = mountElement("span", errorClass, message);
         error.classList.add("red-text", "text-darken-4");
-        grupoDiv.appendChild(error);
+        groupDiv.appendChild(error);
     }
     
 }
 
-function limpaErroForm(input, classe){
+function clearFormError(input, errorClass){
     input.classList.remove("invalid");
-    var spanErro = document.querySelector("."+classe);
-    if (spanErro !== null) {
-        spanErro.remove();
+    var spanError = document.querySelector("." + errorClass);
+    if (spanError !== null) {
+        spanError.remove();
     }
     else{
         return;
     }
 }
 
-function adicionaPacienteTabela(paciente){
-    var pacienteTr = montaTr(paciente);
-
-    //Colocando Tr paciente na tabela de pacientes
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
-
+function addPatientTable(patient){
+    var patientTr = mountTr(patient);
+    var table = document.querySelector("#patients-table");
+    table.appendChild(patientTr);
 }

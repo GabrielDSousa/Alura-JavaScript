@@ -1,4 +1,4 @@
-var tbody = document.querySelector("#tabela-pacientes");
+var tbody = document.querySelector("#patients-table");
 
 /*
 tbody.addEventListener("dblclick", function(event){        

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <title>Aparecida Nutriocionist</title>
+
+</head>
+
+<body class="green lighten-5 green-text text-darken-4">
+    <header class="green darken-4 green-text text-lighten-5">
+        <div class="valign-wrapper center-align container">
+            <div class="row">
+                <div class="col s12">
+                    <h1 class="center-align">Aparecida Nutricion</h1>
+                </div>
+                <div class="col s12">
+                    <form id="form-search">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">search</i>
+                            <input type="text" name="search" id="search" placeholder="Rex Rexinon">
+                            <label for="search">Search</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <h2>My patients</h2>
+
+            <div class="row sync-group">
+                <div class="col s6">
+                    <button id="sync-table" class="btn waves-effect waves-light" type="submit" name="action">Update
+                        table
+                        <i class="material-icons left">sync</i>
+                    </button>
+                </div>
+                <div class="col s6">
+                    <a id="change-language" class="btn waves-effect waves-light right" name="change"
+                        href="index.html">Site português
+                        <i class="material-icons left">language</i>
+                    </a>
+                </div>
+                <br />
+                <br />
+            </div>
+            <br />
+            <br />
+
+
+            <table class="highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Weight(kg)</th>
+                        <th>Height(m)</th>
+                        <th>Body fat(%)</th>
+                        <th>BMI</th>
+                    </tr>
+                </thead>
+                <tbody id="patients-table">
+                    <tr class="patient scale-transition">
+                        <td class="info-name">Paulo</td>
+                        <td class="info-weight">1000</td>
+                        <td class="info-height">2.00</td>
+                        <td class="info-fat">10</td>
+                        <td class="info-bmi">0</td>
+                    </tr>
+
+                    <tr class="patient scale-transition">
+                        <td class="info-name">João</td>
+                        <td class="info-weight">800</td>
+                        <td class="info-height">10.72</td>
+                        <td class="info-fat">40</td>
+                        <td class="info-bmi">0</td>
+                    </tr>
+
+                    <tr class="patient scale-transition">
+                        <td class="info-name">Erica</td>
+                        <td class="info-weight">5400</td>
+                        <td class="info-height">10.64</td>
+                        <td class="info-fat">140</td>
+                        <td class="info-bmi">0</td>
+                    </tr>
+
+                    <tr class="patient scale-transition">
+                        <td class="info-name">Douglas</td>
+                        <td class="info-weight">85</td>
+                        <td class="info-height">1.73</td>
+                        <td class="info-fat">240</td>
+                        <td class="info-bmi">0</td>
+                    </tr>
+                    <tr class="patient scale-transition">
+                        <td class="info-name">Tatiana</td>
+                        <td class="info-weight">46</td>
+                        <td class="info-height">1.55</td>
+                        <td class="info-fat">19</td>
+                        <td class="info-bmi">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <section class="container">
+        <h3>Add new patient</h3>
+        <div class="row">
+            <form class="col s12" id="form-add">
+                <div class="row">
+                    <div class="input-field col s12 name-group">
+                        <label for="name">Name:</label>
+                        <input id="name" name="name" type="text" placeholder="Type the name of your patient"
+                            class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4 weight-group">
+                        <label for="weight">Weight:</label>
+                        <input id="weight" name="weight" type="number" placeholder="Type the weight of your patient">
+                    </div>
+                    <div class="input-field col s4 height-group">
+                        <label for="height">Height:</label>
+                        <input id="height" name="height" type="number" placeholder="Type the height of your patient">
+                    </div>
+                    <div class="input-field col s4 fat-group">
+                        <label for="fat">% of body fat:</label>
+                        <input id="fat" name="fat" type="number" placeholder="Type the body fat percent of your patient">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <button id="add-patient" class="btn waves-effect waves-light" type="submit"
+                            name="action">
+                            Add
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</body>
+
+<script src="css/materialize/js/materialize.min.js"></script>
+<script src="js/bmi.js"></script>
+<script src="js/form.js"></script>
+<script src="js/remove-patient.js"></script>
+<script src="js/search.js"></script>
+<script src="js/sync-table.js"></script>
+
+</html>
