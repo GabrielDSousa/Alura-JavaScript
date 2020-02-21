@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/materialize/css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<title>Aparecida Nutrição</title>
+
+	</head>
+	<body class="green lighten-5 green-text text-darken-4">
+		<header class="green darken-4 green-text text-lighten-5">
+			<div class="valign-wrapper center-align container">
+				<div class="row">
+					<div class="col s12">
+						<h1 class="center-align">Aparecida Nutrição</h1>
+					</div>
+					<div class="col s12">
+						<form id="form-search">
+							<div class="input-field col s12">
+								<i class="material-icons prefix">search</i>
+								<input type="text" name="search" id="search" placeholder="Augusto Augustino">
+								<label for="search">Buscar</label>
+							</div>
+						</form>
+					</div>					
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="container">
+				<h2>Meus pacientes</h2>
+
+				
+				<div class="atualiza-group">
+					<button id="atualizar-tabela" class="btn waves-effect waves-light" type="submit" name="action">Atualizar tabela
+						<i class="material-icons left">sync</i>
+					</button>
+					<br />
+					<br />
+				</div>
+				<br />
+				<br />
+
+				<table class="highlight responsive-table">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Peso(kg)</th>
+							<th>Altura(m)</th>
+							<th>Gordura Corporal(%)</th>
+							<th>IMC</th>
+						</tr>
+					</thead>
+					<tbody id="tabela-pacientes">
+						<tr class="paciente scale-transition">
+							<td class="info-nome">Paulo</td>
+							<td class="info-peso">1000</td>
+							<td class="info-altura">2.00</td>
+							<td class="info-gordura">10</td>
+							<td class="info-imc">0</td>
+						</tr>
+
+						<tr class="paciente scale-transition">
+							<td class="info-nome">João</td>
+							<td class="info-peso">800</td>
+							<td class="info-altura">10.72</td>
+							<td class="info-gordura">40</td>
+							<td class="info-imc">0</td>
+						</tr>
+
+						<tr class="paciente scale-transition">
+							<td class="info-nome">Erica</td>
+							<td class="info-peso">5400</td>
+							<td class="info-altura">10.64</td>
+							<td class="info-gordura">140</td>
+							<td class="info-imc">0</td>
+						</tr>
+
+						<tr class="paciente scale-transition">
+							<td class="info-nome">Douglas</td>
+							<td class="info-peso">85</td>
+							<td class="info-altura">1.73</td>
+							<td class="info-gordura">240</td>
+							<td class="info-imc">0</td>
+						</tr>
+						<tr class="paciente scale-transition">
+							<td class="info-nome">Tatiana</td>
+							<td class="info-peso">46</td>
+							<td class="info-altura">1.55</td>
+							<td class="info-gordura">19</td>
+							<td class="info-imc">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
+
+		<section class="container">
+			<h3>Adicionar novo paciente</h3>
+			<div class="row">
+				<form class="col s12" id="form-add">
+					<div class="row">
+						<div class="input-field col s12 nome-group">
+							<label for="nome">Nome:</label>
+							<input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="validate">
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s4 peso-group">
+							<label for="peso">Peso:</label>
+							<input id="peso" name="peso" type="number" placeholder="digite o peso do seu paciente">
+						</div>
+						<div class="input-field col s4 altura-group">
+							<label for="altura">Altura:</label>
+							<input id="altura" name="altura" type="number" placeholder="digite a altura do seu paciente">
+						</div>
+						<div class="input-field col s4 gordura-group">
+							<label for="gordura">% de Gordura:</label>
+							<input id="gordura" type="number" placeholder="digite a porcentagem de gordura do seu paciente">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12">
+							<button id="adicionar-paciente"  class="btn waves-effect waves-light" type="submit" name="action">
+								Adicionar
+							</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+		</section>
+	</body>
+
+    <script src="css/materialize/js/materialize.min.js"></script>
+	<script src="js/imc.js"></script>
+	<script src="js/form.js"></script>
+	<script src="js/remover-paciente.js"></script>
+	<script src="js/buscar.js"></script>
+	<script src="js/atualizar-tabela.js"></script>
+</html>
